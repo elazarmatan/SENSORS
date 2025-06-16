@@ -6,9 +6,5 @@
         this.name = name;
     }
 
-    public bool Activate()
-    {
-        bool active = true;
-        return active;
-    }
+    public abstract bool Activate();
 }
