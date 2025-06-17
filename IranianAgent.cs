@@ -5,17 +5,17 @@ public abstract class IranianAgent
 {
     public string name;
     protected string rank;
-    public int id;
+    public int sensorSlots;
     public List<Sensor> Pinned = new List<Sensor>();
 
-    public IranianAgent(string name,string rank,int id)
+    public IranianAgent(string name,string rank,int sensorSlots)
     {
         this.name = name;
         this.rank = rank;
-        this.id = id;
+        this.sensorSlots = sensorSlots;
     }
 
-    public void getSensor(List<Sensor> sensors, int range)
+    public void pinnedSensor(List<Sensor> sensors, int range)
     {
         for (int i = 0; i < sensors.Count; i++)
         {
@@ -25,15 +25,13 @@ public abstract class IranianAgent
         {
             Console.WriteLine("enter your choice");
             int id = int.Parse(Console.ReadLine());
-            pinnedSensor(sensors[id - 1]);
+            Pinned.Add(sensors[id - 1]);
+
         }     
     }
 
 
-    public  void pinnedSensor(Sensor s)
-    {
-        Pinned.Add(s);     
-    }
+   
 
     
 
