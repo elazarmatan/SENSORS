@@ -8,7 +8,9 @@ public static class GameManager
     {
         List<string> sensorname = FactorySensor.listOfweaknes();
         List<Sensor> sensors = FactorySensor.listOfpinned();
-        IranianAgent age = Investigation.investRank1(sensorname, sensors);
+        Console.WriteLine("name");
+        string name = Console.ReadLine();
+        IranianAgent age = Investigation.investRank1(name);
         List<string> weaknes = Investigation.createWeaknes(sensorname, age.id);
         age.getSensor(sensors, age.id);
         Investigation.contains(age,weaknes);
