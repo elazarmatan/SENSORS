@@ -11,8 +11,8 @@ public static class GameManager
         Console.WriteLine("name");
         string name = Console.ReadLine();
         IranianAgent age = Investigation.investRank1(name);
-        List<string> weaknes = Investigation.createWeaknes(sensorname, age.id);
-        age.getSensor(sensors, age.id);
+        List<string> weaknes = Investigation.createWeaknes(sensorname, age.sensorSlots);
+        age.pinnedSensor(sensors, age.sensorSlots);
         Investigation.contains(age,weaknes);
     }
 
