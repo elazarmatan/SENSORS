@@ -56,7 +56,7 @@ public static  class Investigation
 
 
             Dictionary<string, int> weaknesDict = convertListToDictionary(weakness);
-        int required = agent.id;
+        int required = agent.sensorSlots;
         int count = 0;
         foreach (Sensor s in agent.Pinned) 
         {
