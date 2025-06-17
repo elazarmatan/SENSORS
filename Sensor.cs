@@ -1,10 +1,10 @@
 ﻿public abstract class Sensor
 {
-    string name { get; }
+    protected string name;
     public Sensor(string name)
     {
         this.name = name;
     }
 
-    public abstract bool Activate();
+    public abstract string Activate();
 }
