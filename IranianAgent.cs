@@ -58,10 +58,19 @@ public abstract class IranianAgent
             }
         }
 
+        foreach(var sens in weaknesDict)
+        {
+            Console.WriteLine($"{sens.Key}:{sens.Value}");
+        }
+        
+
         return weaknesDict;
     }
 
-
+    public void f()
+    {
+        this.weaknesDict = convertListToDictionary(weaknes);
+    }
 
 
 
