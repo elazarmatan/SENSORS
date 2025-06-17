@@ -7,4 +7,6 @@
     }
 
     public abstract string Activate();
+
+   
 }
