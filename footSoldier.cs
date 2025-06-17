@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class footSoldier: IranianAgent
+public class agentRank1: IranianAgent
 {
-    public footSoldier(string name, List<Sensor> sensors) : base(name,"foot soldier") 
+    public agentRank1(string name) : base(name, "agent Rank1") 
     {
-        Random rand = new Random();
-        int weak1 = rand.Next(sensors.Count);
-        int weak2 = rand.Next(sensors.Count);
-        this.weaknes = new Sensor[] { sensors[weak1], sensors[weak2] };
-        this.empty = new Sensor[2];
+       
     }
+
 }
