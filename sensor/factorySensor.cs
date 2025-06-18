@@ -5,7 +5,7 @@ public static class FactorySensor
 {
     public static List<string> listSensorName()
     {
-        List<string> sensorname = new List<string>() { "audio" ,"thermal", "pulse" };
+        List<string> sensorname = new List<string>() { "audio" ,"thermal", "pulse" , "motion" };
         return sensorname;
     }
 
@@ -16,6 +16,7 @@ public static class FactorySensor
         {"audio",typeof(Audio)},
         {"thermal",typeof(Thermal)},
         {"pulse",typeof(Pulse)},
+        {"motion",typeof(Motion)},
     };
 
     public static Sensor createSensor(string name)
