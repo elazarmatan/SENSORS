@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Lifetime;
 
 public abstract class IranianAgent
 {
@@ -15,40 +16,27 @@ public abstract class IranianAgent
         this.sensorSlots = sensorSlots;
     }
 
-    public void pinnedSensor(List<Sensor> sensors, int range)
+    public void pinnedSensor(List<string> sensors, int range)
     {
         for (int i = 0; i < sensors.Count; i++)
         {
-            Console.WriteLine($"{sensors[i].Activate()} {i + 1}");
+            Console.WriteLine($"{sensors[i]} : {i + 1}");
         }
         for (int i = 0; i < range; i++)
         {
             Console.WriteLine("enter your choice");
             int id = int.Parse(Console.ReadLine());
-            Pinned.Add(sensors[id - 1]);
-
-        }     
+            Pinned.Add(FactorySensor.createSensor(sensors[id - 1]));
+        }
+        printList(Pinned);
     }
-
-
-   
-
-    
-
-    
-
-
-    
-
-
-
 
     //לניסוי בלבד
     public static void printList(List<Sensor>l)
     {
         for(int i = 0; i < l.Count; i++)
         {
-            Console.WriteLine(l[i].Activate());
+            Console.WriteLine(l[i].name);
         }
     }
 }
