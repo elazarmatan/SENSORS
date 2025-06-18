@@ -6,15 +6,10 @@ public static class GameManager
 {
     public static void game()
     {
-        List<string> sensorname = FactorySensor.listOfweaknes();
-        List<Sensor> sensors = FactorySensor.listOfpinned();
-        Console.WriteLine("name");
-        string name = Console.ReadLine();
-        IranianAgent age = Investigation.investRank1(name);
-        List<string> weaknes = Investigation.createWeaknes(sensorname, age.sensorSlots);
-        age.pinnedSensor(sensors, age.sensorSlots);
-        Investigation.contains(age,weaknes);
+        Investigation.invest("agentRank1");
     }
+
+
 
     public static void menu()
     {
@@ -25,6 +20,5 @@ public static class GameManager
             );
 
         Console.WriteLine("LEVEL 1");
-        GameManager.game();
     }
 }
