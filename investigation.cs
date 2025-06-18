@@ -11,9 +11,42 @@ public static  class Investigation
         string name = Console.ReadLine();
         IranianAgent age = FactoryAgents.createAgent(typeAgent, name);
         List<string> weaknes = Investigation.createWeaknes(sensorname, age.sensorSlots);
-        age.pinnedSensor(sensorname, age.sensorSlots);
-        Investigation.contains(age, weaknes);
+       
+        bool flag = false;
+        while (!flag)
+        {
+            age.pinnedSensor(sensorname, age.sensorSlots);
+            if (checkActive(age.Pinned))
+            {
+                flag = Investigation.contains(age, weaknes, flag);
+            }
+        }
     }
+
+
+
+    public static bool checkActive(List<Sensor> pinned)
+    {
+        bool flag = true;
+        foreach(Sensor s in pinned)
+        {
+            if (s.Activate())
+            {
+                return flag;
+            }
+        }
+        return flag = false;
+    }
+
+
+    //public static void activeSensor(List<Sensor> pinned)
+    //{
+        
+    //    foreach(Sensor s in pinned)
+    //    {
+    //        s.Activate();
+    //    }
+    //}
 
 
     public static List<string> createWeaknes(List<string> sensors, int range)
@@ -56,7 +89,7 @@ public static  class Investigation
 
 
 
-    public static bool contains(IranianAgent agent, List<string> weakness)
+    public static bool contains(IranianAgent agent, List<string> weakness,bool flag)
     {
 
 
@@ -65,16 +98,17 @@ public static  class Investigation
         int count = 0;
         foreach (Sensor s in agent.Pinned) 
         {
-            if (weaknesDict.ContainsKey(s.Activate()))
+            if (weaknesDict.ContainsKey(s.name))
             {
-                if (weaknesDict[s.Activate()] != 0)
+                if (weaknesDict[s.name] != 0)
                 {
-                    weaknesDict[s.Activate()] --;
+                    weaknesDict[s.name] --;
                     count++;
                     Console.WriteLine($"succes {count}/{required}");
                     if(count == required)
                     {
-                        return true;
+                        flag = true;
+                        return flag;
                         
                     }
                 }
