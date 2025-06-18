@@ -10,10 +10,10 @@ namespace SENSORS
     {
         static void Main(string[] args)
         {
-            GameManager.game();
-            
-               
-            
+            GameManager.menu();
+
+
+
         }
     }
 }

@@ -4,11 +4,105 @@ using System.Collections.Generic;
 public static  class Investigation
 {
     
-    public static IranianAgent investRank1(string name)
+    public static void invest(string typeAgent)
     {
-        IranianAgent age = new agentRank1(name);
-        return age;
+        List<string> sensorname = FactorySensor.listSensorName();
+        IranianAgent age = FactoryAgents.createAgent(typeAgent);
+        List<string> weaknes = Investigation.createWeaknes(sensorname, age.sensorSlots);
+        int required = age.sensorSlots;
+        
+        int counter = 0;
+        bool flag = false;
+        age.pinnedSensor(sensorname, age.sensorSlots);
+        while (!flag)
+        {
+            int succes;
+            counter++;
+            if(counter % 3 == 0) 
+            {
+                age.atack(age);
+            }
+            if (checkActive(age.Pinned))
+            {
+                succes = Investigation.contains(age, weaknes,sensorname);
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine($"succes {succes}/{required}");
+                Console.ResetColor();
+                if (succes == required)
+                {
+                    flag = true;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("WELL DONE, YOU EXPOSED THE AGENT!");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    age.changePinned(age.sensorSlots, succes, sensorname);
+                }
+            }
+            else
+            {
+                Console.WriteLine("THE SENSOR BREAK");
+                flag = true;
+            }
+        }
     }
+
+    public static void invest1()
+    {
+        List<string> sensorname = FactorySensor.listSensorName();
+        IranianAgent agent = new agentRank1();
+        List<string> weaknes = Investigation.createWeaknes(sensorname, agent.sensorSlots);
+        agent.pinnedSensor(sensorname, agent.sensorSlots);
+        int required = agent.sensorSlots;
+        bool flag = false;
+        while (!flag)
+        {
+            int succes;
+
+            if (checkActive(agent.Pinned))
+            {
+                succes = Investigation.contains(agent, weaknes,sensorname);
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine($"succes {succes}/{required}");
+                Console.ResetColor();
+                if (succes == required)
+                {
+                    flag = true;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("WELL DONE, YOU EXPOSED THE AGENT!");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    agent.changePinned(agent.sensorSlots, succes, sensorname);
+                }
+            }
+            else
+            {
+                Console.WriteLine("THE SENSOR BREAK");
+                flag = true;
+                invest1();
+            }
+        }
+    }
+
+
+
+
+
+
+    public static bool checkActive(List<Sensor> pinned)
+    {
+        foreach (Sensor s in pinned)
+        {
+            if (!s.Activate())
+                return false;
+        }
+        return true; 
+    }
+
+
 
 
     public static List<string> createWeaknes(List<string> sensors, int range)
@@ -40,10 +134,10 @@ public static  class Investigation
             }
         }
 
-        foreach (var sens in weaknesDict)
-        {
-            Console.WriteLine($"{sens.Key}:{sens.Value}");
-        }
+        //foreach (var sens in weaknesDict)
+        //{
+        //    Console.WriteLine($"{sens.Key}:{sens.Value}");
+        //}
 
 
         return weaknesDict;
@@ -51,30 +145,27 @@ public static  class Investigation
 
 
 
-    public static bool contains(IranianAgent agent, List<string> weakness)
+    public static int contains(IranianAgent agent, List<string> weakness,List<string>sensors)
     {
 
 
-            Dictionary<string, int> weaknesDict = convertListToDictionary(weakness);
-        int required = agent.id;
-        int count = 0;
-        foreach (Sensor s in agent.Pinned) 
+        Dictionary<string, int> weaknesDict = convertListToDictionary(weakness);
+        int succes = 0;
+        for(int i = 0;i< agent.Pinned.Count;i++)
         {
-            if (weaknesDict.ContainsKey(s.Activate()))
+            if (weaknesDict.ContainsKey(agent.Pinned[i].name))
             {
-                if (weaknesDict[s.Activate()] != 0)
+                if (weaknesDict[agent.Pinned[i].name] != 0)
                 {
-                    weaknesDict[s.Activate()] --;
-                    count++;
-                    Console.WriteLine($"succes {count}/{required}");
-                    if(count == required)
-                    {
-                        return true;
-                        
-                    }
+                    weaknesDict[agent.Pinned[i].name] --;
+                    succes++;
+                    
                 }
             }
+
         }
-        return false;
+
+        return succes;
     }
+    
 }

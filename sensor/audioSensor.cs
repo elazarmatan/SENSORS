@@ -3,8 +3,8 @@
     
     public Audio() : base("audio") { }
 
-    public override string Activate()
-    {   
-        return this.name;
+    public override bool Activate()
+    {      
+        return this.active = true;
     }
 }

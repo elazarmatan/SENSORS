@@ -4,25 +4,42 @@ using System.Runtime.InteropServices;
 
 public static class GameManager
 {
-    public static void game()
-    {
-        List<string> sensorname = FactorySensor.listOfweaknes();
-        List<Sensor> sensors = FactorySensor.listOfpinned();
-        IranianAgent age = Investigation.investRank1(sensorname, sensors);
-        List<string> weaknes = Investigation.createWeaknes(sensorname, age.id);
-        age.getSensor(sensors, age.id);
-        Investigation.contains(age,weaknes);
-    }
+    
+
+
 
     public static void menu()
     {
+        Random rand = new Random();
+        int room = rand.Next(1,10);
+        Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine(
             "=======================\n"+
             "      SENSORS GAME\n"+
             "=======================\n"
             );
+        Console.ResetColor();
 
+        Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine("LEVEL 1");
-        GameManager.game();
+        Console.WriteLine($"The agent continues in room {room}");
+        Console.ResetColor();
+        Investigation.invest1();
+
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("LEVEL 2");
+        Console.WriteLine($"The agent continues in room {room}");
+        Console.ResetColor();
+        Investigation.invest("agentRank2");
+
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("LEVEL 3");
+        Console.WriteLine($"The agent continues in room {room}");
+        Console.ResetColor();
+
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("LEVEL 4");
+        Console.WriteLine($"The agent continues in room {room}");
+        Console.ResetColor();
     }
 }
