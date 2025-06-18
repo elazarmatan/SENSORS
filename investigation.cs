@@ -4,10 +4,15 @@ using System.Collections.Generic;
 public static  class Investigation
 {
     
-    public static IranianAgent investRank1(string name)
+    public static void invest(string typeAgent)
     {
-        IranianAgent age = new agentRank1(name);
-        return age;
+        List<string> sensorname = FactorySensor.listSensorName();
+        Console.WriteLine("name");
+        string name = Console.ReadLine();
+        IranianAgent age = FactoryAgents.createAgent(typeAgent, name);
+        List<string> weaknes = Investigation.createWeaknes(sensorname, age.sensorSlots);
+        age.pinnedSensor(sensorname, age.sensorSlots);
+        Investigation.contains(age, weaknes);
     }
 
 
