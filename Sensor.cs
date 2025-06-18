@@ -1,6 +1,6 @@
 ﻿public abstract class Sensor
 {
-    protected string name;
+    public string name;
     protected bool active = false;
     public Sensor(string name)
     {
