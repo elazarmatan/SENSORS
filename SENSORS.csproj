@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="audioSensor.cs" />
+    <Compile Include="factoryAgents.cs" />
     <Compile Include="factorySensor.cs" />
     <Compile Include="footSoldier.cs" />
     <Compile Include="gameManager.cs" />
