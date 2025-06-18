@@ -13,18 +13,13 @@ public static class FactoryAgents
 
     public static Dictionary<string, Type> Agents = new Dictionary<string, Type>
     {
-     {"agentRank1",typeof(agentRank1)},
-     //{ "Rank4Agent",typeof(Rank4Agent)},
-     //{ "Rank6Agent",typeof(Rank6Agent)},
-     //{ "Rank8Agent",typeof(Rank8Agent)}
-
-
+     {"agentRank2",typeof(agentRank2)},
     };
 
-    public static IranianAgent createAgent(string nameAgent,string name)
+    public static IranianAgent createAgent(string nameAgent)
     {
         Type type = FactoryAgents.Agents[nameAgent];
-        IranianAgent agent = (IranianAgent)Activator.CreateInstance(type,name);
+        IranianAgent agent = (IranianAgent)Activator.CreateInstance(type);
         return agent;
     }
 }
