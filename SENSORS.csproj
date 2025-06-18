@@ -43,10 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="agents\agentRank2.cs" />
+    <Compile Include="sensor\magneticSensor.cs" />
+    <Compile Include="sensor\motionSensor.cs" />
     <Compile Include="sensor\audioSensor.cs" />
     <Compile Include="agents\factoryAgents.cs" />
     <Compile Include="sensor\factorySensor.cs" />
-    <Compile Include="agents\footSoldier.cs" />
+    <Compile Include="agents\agentRank1.cs" />
     <Compile Include="gameManager.cs" />
     <Compile Include="investigation.cs" />
     <Compile Include="agents\IranianAgent.cs" />
