@@ -9,9 +9,8 @@ public abstract class IranianAgent
     public int sensorSlots;
     public List<Sensor> Pinned = new List<Sensor>();
 
-    public IranianAgent(string name,string rank,int sensorSlots)
+    public IranianAgent(string rank,int sensorSlots)
     {
-        this.name = name;
         this.rank = rank;
         this.sensorSlots = sensorSlots;
     }
@@ -20,23 +19,54 @@ public abstract class IranianAgent
     {
         for (int i = 0; i < sensors.Count; i++)
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine($"{sensors[i]} : {i + 1}");
+            Console.ResetColor();
         }
         for (int i = 0; i < range; i++)
         {
-            Console.WriteLine("enter your choice");
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine($"You need {range} sensors to expose the agent\n" +
+                "enter your choice");
+            Console.ResetColor();
             int id = int.Parse(Console.ReadLine());
             Pinned.Add(FactorySensor.createSensor(sensors[id - 1]));
         }
-        printList(Pinned);
     }
 
-    //לניסוי בלבד
-    public static void printList(List<Sensor>l)
+
+    public  void changePinned(int range,int succes, List<string> sensors)
     {
-        for(int i = 0; i < l.Count; i++)
+        for (int i = 0; i < Pinned.Count; i++)
         {
-            Console.WriteLine(l[i].name);
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine($"{Pinned[i]} : {i + 1}");
+            Console.ResetColor();
         }
+        for (int i = 0; i < range - succes; i++)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("which sensor you want change enter your choice");
+            Console.ResetColor();
+
+            int idx = int.Parse(Console.ReadLine());
+            for (int j = 0; j < sensors.Count; j++)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine($"{sensors[j]} : {j + 1}");
+                Console.ResetColor();
+            }
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("enter your choice");
+            Console.ResetColor();
+            int idx2 = int.Parse(Console.ReadLine());
+            Pinned[idx - 1] = FactorySensor.createSensor(sensors[idx2 - 1]);
+        }
+
     }
+
+
+   
+
+    public abstract string atack(IranianAgent agent);
 }
