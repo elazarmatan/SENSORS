@@ -24,7 +24,7 @@ public static class GameManager
         Console.WriteLine("LEVEL 1");
         Console.WriteLine($"The agent continues in room {room}");
         Console.ResetColor();
-        Investigation.invest1();
+        Investigation.invest("agentRank1");
 
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("LEVEL 2");
