@@ -35,7 +35,10 @@ public static  class Investigation
                 {
                     flag = true;
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("WELL DONE, YOU EXPOSED THE AGENT!");
+                    Console.WriteLine(
+                                      "WELL DONE, YOU EXPOSED THE AGENT!\n"+
+                                      "================================="
+                        );
                     Console.ResetColor();
                 }
                 else
