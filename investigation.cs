@@ -18,7 +18,7 @@ public static  class Investigation
         {
             int succes;
             counter++;
-            if(counter % 3 == 0) 
+            if(counter % 3 == 0 && counter != 0) 
             {
                 age.atack(age);
             }
