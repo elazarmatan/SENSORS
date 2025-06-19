@@ -36,6 +36,8 @@ public static class GameManager
         Console.WriteLine("LEVEL 3");
         Console.WriteLine($"The agent continues in room {room}");
         Console.ResetColor();
+        Investigation.invest("agentRank3");
+
 
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("LEVEL 4");
