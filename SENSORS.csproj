@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="agents\agentRank2.cs" />
+    <Compile Include="agents\agentRank3.cs" />
     <Compile Include="sensor\magneticSensor.cs" />
     <Compile Include="sensor\motionSensor.cs" />
     <Compile Include="sensor\audioSensor.cs" />
