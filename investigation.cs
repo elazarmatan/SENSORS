@@ -18,9 +18,12 @@ public static  class Investigation
         {
             int succes;
             counter++;
-            if(counter % 3 == 0 && counter != 0) 
+            if (age is IAttack attacker) 
             {
-                age.atack(age);
+                if (counter % 3 == 0 && counter != 0)
+                {
+                    attacker.Attack(age);
+                }
             }
             if (checkActive(age.Pinned))
             {
@@ -43,51 +46,13 @@ public static  class Investigation
             else
             {
                 Console.WriteLine("THE SENSOR BREAK");
-                invest1();
+                invest($"agentRank{age.sensorSlots}");
                 flag = true;
             }
         }
     }
 
-    public static void invest1()
-    {
-        List<string> sensorname = FactorySensor.listSensorName();
-        IranianAgent agent = new agentRank1();
-        List<string> weaknes = Investigation.createWeaknes(sensorname, agent.sensorSlots);
-        agent.pinnedSensor(sensorname, agent.sensorSlots);
-        int required = agent.sensorSlots;
-        bool flag = false;
-        while (!flag)
-        {
-            int succes;
-
-            if (checkActive(agent.Pinned))
-            {
-                succes = Investigation.contains(agent, weaknes,sensorname);
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine($"succes {succes}/{required}");
-                Console.ResetColor();
-                if (succes == required)
-                {
-                    flag = true;
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("WELL DONE, YOU EXPOSED THE AGENT!");
-                    Console.ResetColor();
-                }
-                else
-                {
-                    agent.changePinned(agent.sensorSlots, succes, sensorname);
-                }
-            }
-            else
-            {
-                Console.WriteLine("THE SENSOR BREAK");
-                invest1();
-                flag = true;
-
-            }
-        }
-    }
+    
 
 
 
@@ -136,10 +101,7 @@ public static  class Investigation
             }
         }
 
-        //foreach (var sens in weaknesDict)
-        //{
-        //    Console.WriteLine($"{sens.Key}:{sens.Value}");
-        //}
+        
 
 
         return weaknesDict;
