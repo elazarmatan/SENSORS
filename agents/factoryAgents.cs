@@ -3,11 +3,7 @@ using System;
 
 public static class FactoryAgents
 {
-    public static List<string> listAgentsName()
-    {
-        List<string> Agentsame = new List<string>() { "agentRank1" };
-        return Agentsame;
-    }
+   
 
 
 
