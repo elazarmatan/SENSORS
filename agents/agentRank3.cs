@@ -1,13 +1,13 @@
 ﻿using System;
 
-public class agentRank3 : IranianAgent
+public class agentRank3:IranianAgent , IAttack
 {
     public agentRank3() : base("agentRank3", 4)
     {
 
     }
 
-    public override string atack(IranianAgent agent)
+    public  string Attack(IranianAgent agent)
     {
         Random rand = new Random();
         int idx1 = rand.Next(agent.Pinned.Count);
