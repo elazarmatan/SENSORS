@@ -18,7 +18,7 @@ public static  class Investigation
         {
             int succes;
             counter++;
-            if(counter % 3 == 0) 
+            if(counter % 3 == 0 && counter != 0) 
             {
                 age.atack(age);
             }
@@ -43,6 +43,7 @@ public static  class Investigation
             else
             {
                 Console.WriteLine("THE SENSOR BREAK");
+                invest1();
                 flag = true;
             }
         }
@@ -81,8 +82,9 @@ public static  class Investigation
             else
             {
                 Console.WriteLine("THE SENSOR BREAK");
-                flag = true;
                 invest1();
+                flag = true;
+
             }
         }
     }
