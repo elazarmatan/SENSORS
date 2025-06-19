@@ -43,6 +43,7 @@ public static  class Investigation
             else
             {
                 Console.WriteLine("THE SENSOR BREAK");
+                invest1();
                 flag = true;
             }
         }
@@ -81,8 +82,9 @@ public static  class Investigation
             else
             {
                 Console.WriteLine("THE SENSOR BREAK");
-                flag = true;
                 invest1();
+                flag = true;
+
             }
         }
     }
