@@ -9,6 +9,7 @@ public static class FactoryAgents
 
     public static Dictionary<string, Type> Agents = new Dictionary<string, Type>
     {
+     {"agentRank1",typeof(agentRank1)},
      {"agentRank2",typeof(agentRank2)},
      {"agentRank3",typeof(agentRank3)},
     };
