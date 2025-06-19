@@ -68,5 +68,4 @@ public abstract class IranianAgent
 
    
 
-    public abstract string atack(IranianAgent agent);
 }
