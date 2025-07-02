@@ -43,18 +43,17 @@
 
 ## 🔁 תרשים זרימה של המשחק
 
-```plaintext
-[Start Game]
-     ↓
-[Generate Agent with N Weaknesses]
-     ↓
-[While not revealed]
-     ↓
-[Ask player for N sensors]
-     ↓
-[Compare input to weaknesses]
-     ↓
-[Show result: X/Y sensors matched]
-     ↓
-[Repeat or Reveal Agent if X == Y]
+```mermaid
+flowchart TD
+    A[התחלה] --> B[יצירת סוכן עם N חולשות]
+    B --> C[כל עוד הסוכן לא נחשף]
+    C --> D[קבלת N שמות סנסורים מהשחקן]
+    D --> E[בדיקת אילו סנסורים תואמים לחולשות]
+    E --> F[הצגת תוצאה: X/Y סנסורים התאימו]
+    F --> G{האם X == Y?}
+    G -- כן --> H[הסוכן נחשף! ניצחון]
+    G -- לא --> C
+    H --> I{להתחיל משחק חדש?}
+    I -- כן --> B
+    I -- לא --> J[יציאה]
 ```
